@@ -1,0 +1,29 @@
+<nb-card>
+	<nb-card-header>
+		Новый сотрудник
+	</nb-card-header>
+	<nb-card-body>
+		<input type="text" nbInput [(ngModel)]="categoryRequest.description" placeholder="descr">
+		<input type="text" nbInput [(ngModel)]="categoryRequest.name" placeholder="name">
+		<input type="text" nbInput [(ngModel)]="categoryRequest.uslugaId" placeholder="uslugaId">
+		<label class="label">Картинку <span class="red-span">*</span></label><br>
+		<input accept="image/png, image/jpg, image/jpeg"
+		       style="display: none;"
+		       type="file" (change)="logoImageLoad($event)"
+           #fileInput1>
+		<button nbButton status="info" size="small" (click)="fileInput1.click()">
+			Загрузите изображение
+			<nb-icon icon="upload-outline"></nb-icon>
+		</button>
+		<br>
+		<div *ngIf="logoImageUrl">
+			<img [src]="logoImageUrl" class="mt-2 logo-image" alt="Лого бренда">
+		</div>
+	</nb-card-body>
+	<nb-card-footer>
+		<button nbButton (click)="addNew()">
+			{{!categoryId ? 'Добавить' : 'Обновить'}}
+		</button>
+	</nb-card-footer>
+
+</nb-card>
